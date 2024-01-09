@@ -4,6 +4,7 @@ import backgroundImg from '../assets/background.jpg';
 import './home.css';
 import Rules from './Rules';
 import Win from './Win'
+import  axios from 'axios'
 
 
 export default function Home() {
@@ -12,6 +13,20 @@ export default function Home() {
   const toggleRules = () => {
     setShowRules(!showRules);
   };
+
+
+  const [quote, setQuote] = useState('')
+
+ const getQuote = () => {
+    axios.get('https://api.quotable.io/random')
+    .then(response => {
+      // console.log(response)
+      // console.log(response.data.content)
+      setQuote(response.data.content)
+    }).catch(error =>{
+      console.log(error)
+    })
+ }
 
   return (
     <>
@@ -32,6 +47,14 @@ export default function Home() {
             </div>
             <button onClick={toggleRules} className='rules-btn'>წესები</button>
           </div>
+
+
+          <div className="container">
+      {quote ? <p className='quote'>{quote}</p> : null}
+      <button className='button' onClick={getQuote}>მოტივაცია</button>
+      </div>
+
+
         </div>
       </div>
     </>

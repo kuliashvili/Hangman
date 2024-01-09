@@ -4,6 +4,15 @@
     position: absolute;
     z-index: -1;
 }
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #061176;
+    padding: 10px;
+    border-radius: 12px;
+}
 
 .Home {
     width: 100%;
